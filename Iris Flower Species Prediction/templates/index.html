@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Species Prediction</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #b3e0ff, #ffffff); /* Updated gradient */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.559);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #007acc; /* Changed heading color to blue */
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            font-size: 1.1em;
+            color: #555;
+            display: block; /* Ensure labels take up full width */
+        }
+        
+        .form-group input {
+            background-color: rgba(255, 255, 255, 0.525);
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            margin-top: 5px;
+            border-radius: 50px;
+            border: 2px solid #007acc; /* Updated input border color */
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            border-color: #3399ff; /* Updated focus color */
+            outline: none; /* Removes the default outline */
+        }
+        
+        .form-group input[type="submit"] {
+            background-color: #b3e0ff; /* Changed button background */
+            color: #1d1717;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 50px;
+            cursor: pointer;
+            padding: 12px;
+            border-color: #007acc; /* Updated button border */
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-group input[type="submit"]:hover {
+            background-color: #007acc; /* Changed hover button color */
+            color: white; /* Adjust text color on hover */
+        }
+        
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #333;
+            font-weight: 300;
+        }
+
+        /* Popup Styles (if needed in the future) */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+        }
+        
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007acc; /* Updated popup button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .popup button:hover {
+            background-color: #3399ff; /* Updated hover color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Iris Flower Species Prediction</h2>
+        <form id="prediction-form" action="/predict" method="POST">
+            <div class="form-group">
+                <label for="sepal_length">Sepal Length (cm):</label>
+                <input type="number" step="0.1" id="sepal_length" name="sepal_length" required>
+            </div>
+            <div class="form-group">
+                <label for="sepal_width">Sepal Width (cm):</label>
+                <input type="number" step="0.1" id="sepal_width" name="sepal_width" required>
+            </div>
+            <div class="form-group">
+                <label for="petal_length">Petal Length (cm):</label>
+                <input type="number" step="0.1" id="petal_length" name="petal_length" required>
+            </div>
+            <div class="form-group">
+                <label for="petal_width">Petal Width (cm):</label>
+                <input type="number" step="0.1" id="petal_width" name="petal_width" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <strong>Predicted Species:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- No additional JavaScript needed at the moment -->
+    <script>
+        // No additional JavaScript needed at the moment
+    </script>
+</body>
+</html>
